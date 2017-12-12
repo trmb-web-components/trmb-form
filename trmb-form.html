@@ -8,6 +8,7 @@
 
 <dom-module id="trmb-form">
     <template>
+        
         <style include="form-css">
             
         </style>
@@ -23,16 +24,51 @@
             <div class="grid-container">
                 <div class="grid-x grid-margin-x" id="formSectionsContainer">
                     <!-- all form data will go here-->
-                </div>
-            </div>
-        </div>
-        <div id="slotContainer">
-        </div>
-        <dom-if if="[[renderError]]">
-            <template>
+                    <dom-if if$="{{_isSectionContains(formSections, 'user-basic')}}">
+                        <template>
+                            <div class="cell large-6">
+                                <user-basic></user-basic>
+                            </div>
+                        </template>
+    </dom-if>
+    <dom-if if$="{{_isSectionContains(formSections, 'user-interests')}}">
+        <template>
+                            <div class="cell large-6">
+                                <user-interests></user-interests>
+                            </div>
+                        </template>
+    </dom-if>
+    <dom-if if$="{{_isSectionContains(formSections, 'user-preference')}}">
+        <template>
+                            <div class="cell large-6">
+                                <user-preference></user-preference>
+                            </div>
+                        </template>
+    </dom-if>
+    <dom-if if$="{{_isSectionContains(formSections, 'user-contact')}}">
+        <template>
+                            <div class="cell large-6">
+                                <user-contact></user-contact>
+                            </div>
+                        </template>
+    </dom-if>
+    <dom-if if$="{{_isSectionContains(formSections, 'user-social-media')}}">
+        <template>
+                            <div class="cell large-6">
+                                <user-social-media></user-social-media>
+                            </div>
+                        </template>
+    </dom-if>
+    </div>
+    </div>
+    </div>
+    <div id="slotContainer">
+    </div>
+    <dom-if if$="[[renderError]]">
+        <template>
                 <div>Render error. Please specify the type or content inside trmb-form tag</div>
             </template>
-        </dom-if>
+    </dom-if>
     </template>
 
     <script>
@@ -65,7 +101,8 @@
                         type: String
                     },
                     formSections: {
-                        type: Array
+                        type: Array,
+                        notify: true
                     },
                     /*formSchema: {
                         type: Object
@@ -87,11 +124,15 @@
 
                 this.$.slotContainer.innerHTML = this.$.slotContainer.__dataHost.innerHTML;
                 if (this.formType == 'user-profile') {
-                    this.formSections = ['user-basic', 'user-interests', 'user-preference', 'user-social-media', 'user-contact' ];
+                    this.formSections = ['user-basic', 'user-interests', 'user-preference', 'user-social-media', 'user-contact'];
                 } else {
                     this.formSections = (this.formType && this.formType.split(",")) || [];
                 }
                 this.loadSections();
+                if (undefined != this.formDataString) {
+                    console.log(this.formDataString);
+                    this.formData = JSON.parse(this.formDataString);
+                }
             }
 
             loadSections() {
@@ -100,7 +141,7 @@
                 this.formSections.forEach(function(formSection, index) {
                     Polymer.importHref(this.resolveUrl('formSections/' + formSection.trim() + '.html'),
                         function(e) {
-                            if( index == 0 ) {
+                            /*if (index == 0) {
                                 sectionsContainer.innerHTML = '';
                             }
                             if ((index % 2 == 0) || (index % 2 == 1)) {
@@ -108,13 +149,18 @@
                                 //formSectionObject.innerHTML = formSectionObject.innerHTML + e.path[0].import.body.innerHTML;
                             } else {
                                 sectionsContainer.innerHTML += e.path[0].import.body.innerHTML + '</div>';
-                            }
+                            }*/
                         },
                         function(e) {
-                            sectionsContainer.innerHTML += "no sections available for " + formSection ;
+                            sectionsContainer.innerHTML += "no sections available for " + formSection;
                         }
                     );
                 }.bind(this));
+            }
+            _isSectionContains(sections, section) {
+                console.log(section, sections);
+                return (sections && sections.indexOf(section) > -1);
+
             }
         }
 

@@ -1,3 +1,14 @@
+<link rel="import" href="../../trmb-css/dist/components/form.css.min.html">
+<link rel="import" href="../../trmb-css/dist/components/xy-grid.css.min.html">
+<dom-module id="user-interests">
+    <template>
+        
+        <style include="form-css">
+            
+        </style>
+        <style include="xy-grid-css">
+            
+        </style>
 <div class="card">
     <div class="card-divider">
         <h4>Security</h4>
@@ -28,3 +39,19 @@
         </div>
     </div>
 </div>
+
+</template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class TrmbUserInterestForm extends Polymer.Element {
+            static get is() {
+                return 'user-interests';
+            }
+        }
+        window.customElements.define(TrmbUserInterestForm.is, TrmbUserInterestForm);
+    </script>
+
+</dom-module>
