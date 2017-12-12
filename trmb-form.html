@@ -1,0 +1,123 @@
+<link rel="import" href="../@polymer/polymer/polymer-element.html">
+<link rel="import" href="../@polymer/polymer/lib/elements/dom-if.html">
+<link rel="import" href="../@polymer/polymer/lib/utils/import-href.html">
+<link rel="import" href="../@polymer/polymer/lib/utils/resolve-url.html">
+<link rel="import" href="../@polymer/polymer/lib/legacy/polymer.dom.html">
+<link rel="import" href="../trmb-css/dist/components/form.css.min.html">
+<link rel="import" href="../trmb-css/dist/components/xy-grid.css.min.html">
+
+<dom-module id="trmb-form">
+    <template>
+        <style include="form-css">
+            
+        </style>
+        <style include="xy-grid-css">
+            
+        </style>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <div id="sectionsContainer">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x" id="formSectionsContainer">
+                    <!-- all form data will go here-->
+                </div>
+            </div>
+        </div>
+        <div id="slotContainer">
+        </div>
+        <dom-if if="[[renderError]]">
+            <template>
+                <div>Render error. Please specify the type or content inside trmb-form tag</div>
+            </template>
+        </dom-if>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class TrmbForm extends Polymer.Element {
+            static get is() {
+                return 'trmb-form';
+            }
+
+            static get properties() {
+                return {
+                    renderError: {
+                        type: Boolean,
+                        value: true
+                    },
+                    formType: {
+                        type: String
+                    },
+                    formHasType: {
+                        type: Boolean,
+                        value: false
+                    },
+                    formData: {
+                        type: Object
+                    },
+                    formDataString: {
+                        type: String
+                    },
+                    formSections: {
+                        type: Array
+                    },
+                    /*formSchema: {
+                        type: Object
+                    },
+                    formSchemaString: {
+                        type: String
+                    }
+                    */
+                    accessToken: {
+                        type: String
+                    }
+                };
+            }
+
+            ready() {
+                super.ready();
+                this.renderError = (undefined === this.formType && !this.$.slotContainer.__dataHost.innerHTML.trim());
+                this.formHasType = (undefined !== this.formType);
+
+                this.$.slotContainer.innerHTML = this.$.slotContainer.__dataHost.innerHTML;
+                if (this.formType == 'user-profile') {
+                    this.formSections = ['user-basic', 'user-interests', 'user-preference', 'user-social-media', 'user-contact' ];
+                } else {
+                    this.formSections = (this.formType && this.formType.split(",")) || [];
+                }
+                this.loadSections();
+            }
+
+            loadSections() {
+                var formSectionsLength = this.formSections.length;
+                var sectionsContainer = this.$.formSectionsContainer;
+                this.formSections.forEach(function(formSection, index) {
+                    Polymer.importHref(this.resolveUrl('formSections/' + formSection.trim() + '.html'),
+                        function(e) {
+                            if( index == 0 ) {
+                                sectionsContainer.innerHTML = '';
+                            }
+                            if ((index % 2 == 0) || (index % 2 == 1)) {
+                                sectionsContainer.innerHTML += '<div class="cell large-6">' + e.path[0].import.body.innerHTML;
+                                //formSectionObject.innerHTML = formSectionObject.innerHTML + e.path[0].import.body.innerHTML;
+                            } else {
+                                sectionsContainer.innerHTML += e.path[0].import.body.innerHTML + '</div>';
+                            }
+                        },
+                        function(e) {
+                            sectionsContainer.innerHTML += "no sections available for " + formSection ;
+                        }
+                    );
+                }.bind(this));
+            }
+        }
+
+        window.customElements.define(TrmbForm.is, TrmbForm);
+    </script>
+</dom-module>
