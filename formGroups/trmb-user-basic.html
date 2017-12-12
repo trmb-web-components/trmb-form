@@ -1,6 +1,6 @@
 <link rel="import" href="../../trmb-css/dist/components/form.css.min.html">
 <link rel="import" href="../../trmb-css/dist/components/xy-grid.css.min.html">
-<dom-module id="user-interests">
+<dom-module id="trmb-user-basic">
     <template>
         
         <style include="form-css">
@@ -11,47 +11,52 @@
         </style>
 <div class="card">
     <div class="card-divider">
-        <h4>Security</h4>
+        <h4>Basic Information</h4>
+    </div>
+    <div class="profile-picture">
+        <img src="images/DSC02022.jpeg" />
     </div>
     <div class="card-section">
         <div class="grid-x grid-margin-x">
-            <div class="cell large-12 small-12">
-                <label>Old Password</label>
+            <div class="cell large-6 small-12">
+                <label>First Name</label>
+                <input type="text" value="{{formData.firstName}}" />
+            </div>
+            <div class="cell large-6 small-12">
+                <label>Last Name</label>
                 <input type="text" />
             </div>
         </div>
         <div class="grid-x grid-margin-x">
             <div class="cell large-12 small-12">
-                <label>New Password</label>
+                <label>Email</label>
                 <input type="text" />
             </div>
         </div>
         <div class="grid-x grid-margin-x">
             <div class="cell large-12 small-12">
-                <label>Confirm Password</label>
-                <input type="text" />
-            </div>
-        </div>
-        <div class="grid-x grid-margin-x">
-            <div class="cell large-12 small-12">
-                <a href="#" class="button">Change Password</a>
+                <label>Country</label>
+                <select>
+                    <option>Country 1</option>
+                    <option>Country 2</option>
+                    <option>Country 3</option>
+                </select>
             </div>
         </div>
     </div>
 </div>
-
 </template>
     <script>
         /**
          * @customElement
          * @polymer
          */
-        class TrmbUserInterestForm extends Polymer.Element {
+        class TrmbUserBasicForm extends Polymer.Element {
             static get is() {
-                return 'user-interests';
+                return 'trmb-user-basic';
             }
         }
-        window.customElements.define(TrmbUserInterestForm.is, TrmbUserInterestForm);
+        window.customElements.define(TrmbUserBasicForm.is, TrmbUserBasicForm);
     </script>
 
 </dom-module>

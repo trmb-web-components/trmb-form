@@ -27,35 +27,35 @@
                     <dom-if if$="{{_isSectionContains(formSections, 'user-basic')}}">
                         <template>
                             <div class="cell large-6">
-                                <user-basic></user-basic>
+                                <trmb-user-basic></trmb-user-basic>
                             </div>
                         </template>
     </dom-if>
     <dom-if if$="{{_isSectionContains(formSections, 'user-interests')}}">
         <template>
                             <div class="cell large-6">
-                                <user-interests></user-interests>
+                                <trmb-user-interests></trmb-user-interests>
                             </div>
                         </template>
     </dom-if>
     <dom-if if$="{{_isSectionContains(formSections, 'user-preference')}}">
         <template>
                             <div class="cell large-6">
-                                <user-preference></user-preference>
+                                <trmb-user-preference></trmb-user-preference>
                             </div>
                         </template>
     </dom-if>
     <dom-if if$="{{_isSectionContains(formSections, 'user-contact')}}">
         <template>
                             <div class="cell large-6">
-                                <user-contact></user-contact>
+                                <trmb-user-contact></trmb-user-contact>
                             </div>
                         </template>
     </dom-if>
     <dom-if if$="{{_isSectionContains(formSections, 'user-social-media')}}">
         <template>
                             <div class="cell large-6">
-                                <user-social-media></user-social-media>
+                                <trmb-user-social-media></trmb-user-social-media>
                             </div>
                         </template>
     </dom-if>
@@ -139,7 +139,7 @@
                 var formSectionsLength = this.formSections.length;
                 var sectionsContainer = this.$.formSectionsContainer;
                 this.formSections.forEach(function(formSection, index) {
-                    Polymer.importHref(this.resolveUrl('formSections/' + formSection.trim() + '.html'),
+                    Polymer.importHref(this.resolveUrl('formGroups/trmb-' + formSection.trim() + '.html'),
                         function(e) {
                             /*if (index == 0) {
                                 sectionsContainer.innerHTML = '';
@@ -158,7 +158,6 @@
                 }.bind(this));
             }
             _isSectionContains(sections, section) {
-                console.log(section, sections);
                 return (sections && sections.indexOf(section) > -1);
 
             }
