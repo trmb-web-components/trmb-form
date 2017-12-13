@@ -1,0 +1,39 @@
+<link rel="import" href="../@polymer/polymer/polymer-element.html">
+
+<link rel="import" href="../@polymer/polymer/lib/legacy/polymer.dom.html">
+<link rel="import" href="../trmb-css/dist/components/form.css.min.html">
+<link rel="import" href="../trmb-css/dist/components/xy-grid.css.min.html">
+
+<dom-module id="trmb-css-form">
+    <template>
+        <style include="form-css">
+            
+        </style>
+        <style include="xy-grid-css">
+        </style>
+        <form>
+                                    <label class="reset">Input Label- OS</label>
+                                    <input type="text" placeholder=".medium-6.cell" class="reset"></br>
+                                    <label class="reset">Input Label - OS</label>
+                                    <input type="text" placeholder=".medium-6.cell" class="reset">
+                                    <input type="button" value="submit" class="reset">
+                                </form>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class TrmbCssForm extends Polymer.Element {
+            static get is() {
+                return 'trmb-css-form';
+            }
+            ready() {
+                super.ready();
+            }
+        }
+
+        window.customElements.define(TrmbCssForm.is, TrmbCssForm);
+    </script>
+</dom-module>
