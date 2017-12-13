@@ -1,0 +1,21 @@
+<link rel="import" href="../@polymer/polymer/polymer-element.html">
+
+<dom-module id="trmb-dummy">
+    <template>
+        <slot></slot>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class TrmbDummy extends Polymer.Element {
+            static get is() {
+                return 'trmb-dummy';
+            }
+        }
+
+        window.customElements.define(TrmbDummy.is, TrmbDummy);
+    </script>
+</dom-module>
