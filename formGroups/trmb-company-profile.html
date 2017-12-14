@@ -1,0 +1,119 @@
+<link rel="import" href="../../trmb-css/dist/components/common.css.min.html">
+<link rel="import" href="../../trmb-css/dist/components/form.css.min.html">
+<link rel="import" href="../../trmb-css/dist/components/card.css.min.html">
+<link rel="import" href="../../trmb-css/dist/components/xy-grid.css.min.html">
+<dom-module id="trmb-company-profile">
+    <template>
+   <style include="common-css">
+   </style>
+   <style include="card-css">
+   </style>
+   <style include="card-css">
+   </style>
+   <style include="form-css">
+   </style>
+   <style include="xy-grid-css">
+   </style>
+   <div class="card">
+      <div class="card-divider">
+         <h4>Company</h4>
+      </div>
+      <div class="card-section">
+         <div class="grid-x grid-margin-x">
+            <div class="cell large-12 small-12">
+               <label>Company Name</label>
+               <input type="text" value="{{formData.firstName}}" />
+            </div>
+            <div class="cell large-12 small-12">
+               <label>Domain Urls</label>
+               <textarea></textarea>
+            </div>
+         </div>
+            <div class="grid-x grid-margin-x">
+                <h3>Home</h3>
+               <div class="cell large-12 small-12">
+                  <label>Street</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Region</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Postal code</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Map Location</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Country</label>
+                  <select>
+                     <option>Country 1</option>
+                     <option>Country 2</option>
+                     <option>Country 3</option>
+                  </select>
+               </div>
+            </div>
+            
+            <div class="grid-x grid-margin-x">
+                <h3>Office</h3>
+               <div class="cell large-12 small-12">
+                  <label>Street</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Region</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Map Location</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Postal code</label>
+                  <input type="text" />
+               </div>
+            </div>
+            <div class="grid-x grid-margin-x">
+               <div class="cell large-12 small-12">
+                  <label>Country</label>
+                  <select>
+                     <option>Country 1</option>
+                     <option>Country 2</option>
+                     <option>Country 3</option>
+                  </select>
+               </div>
+            </div>
+      </div>
+   </div>
+</template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class TrmbCompanyProfile extends Polymer.Element {
+            static get is() {
+                return 'trmb-company-profile';
+            }
+        }
+        window.customElements.define(TrmbCompanyProfile.is, TrmbCompanyProfile);
+    </script>
+
+</dom-module>

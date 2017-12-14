@@ -2,7 +2,7 @@
 <link rel="import" href="../../trmb-css/dist/components/form.css.min.html">
 <link rel="import" href="../../trmb-css/dist/components/card.css.min.html">
 <link rel="import" href="../../trmb-css/dist/components/xy-grid.css.min.html">
-<dom-module id="trmb-user-basic">
+<dom-module id="trmb-user-basic1">
     <template>
         <style include="common-css">
             
@@ -21,26 +21,19 @@
         </style>
 <div class="card">
     <div class="card-divider">
-        <h4>Basic Information</h4>
-    </div>
-    <div class="profile-picture">
-        <img src="images/DSC02022.jpg" />
+        <h4>Company</h4>
     </div>
     <div class="card-section">
         <div class="grid-x grid-margin-x">
-            <div class="cell large-6 small-12">
-                <label>First Name</label>
-                <input type="text" value="{{formData.firstName}}" />
-            </div>
-            <div class="cell large-6 small-12">
-                <label>Last Name</label>
+            <div class="cell large-12 small-12">
+                <label>Company name</label>
                 <input type="text" />
             </div>
         </div>
         <div class="grid-x grid-margin-x">
             <div class="cell large-12 small-12">
-                <label>Email</label>
-                <input type="text" />
+                <label>Domain urls</label>
+                <textarea></textarea>
             </div>
         </div>
         <div class="grid-x grid-margin-x">
@@ -297,12 +290,12 @@
          * @customElement
          * @polymer
          */
-        class TrmbUserBasicForm extends Polymer.Element {
+        class TrmbUserBasicForm1 extends Polymer.Element {
             static get is() {
-                return 'trmb-user-basic';
+                return 'trmb-user-basic1';
             }
         }
-        window.customElements.define(TrmbUserBasicForm.is, TrmbUserBasicForm);
+        window.customElements.define(TrmbUserBasicForm1.is, TrmbUserBasicForm1);
     </script>
 
 </dom-module>
