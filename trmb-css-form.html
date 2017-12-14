@@ -18,13 +18,8 @@
         </style>
         <style include="xy-grid-css">
         </style>
-        <form>
-                                    <label class="reset">Input Label- OS</label>
-                                    <input type="text" placeholder=".medium-6.cell" class="reset"></br>
-                                    <label class="reset">Input Label - OS</label>
-                                    <input type="text" placeholder=".medium-6.cell" class="reset">
-                                    <input type="button" value="submit" class="reset">
-                                </form>
+        <div id="css-form-slot-container">
+        </div>
     </template>
 
     <script>
@@ -36,8 +31,23 @@
             static get is() {
                 return 'trmb-css-form';
             }
+            static get properties() {
+                return {
+                    loadSlot: {
+                        type: String,
+                        notify: true,
+                        observer: '_loadSlot'
+                    }
+                }
+            }
             ready() {
                 super.ready();
+                this.$['css-form-slot-container'].innerHTML = this.$['css-form-slot-container'].__dataHost.innerHTML;
+            }
+            _loadSlot() {
+                if (this.loadSlot == 'true') {
+                    this.$['css-form-slot-container'].innerHTML = this.$['css-form-slot-container'].__dataHost.innerHTML;
+                }
             }
         }
 

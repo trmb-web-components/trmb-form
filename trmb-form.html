@@ -69,7 +69,7 @@
     </div>
     </div>
     </div>
-    <div id="slotContainer">
+    <div id="slotContainer1">
     </div>
     <dom-if if$="[[renderError]]">
         <template>
@@ -126,10 +126,10 @@
 
             ready() {
                 super.ready();
-                this.renderError = (undefined === this.formType && !this.$.slotContainer.__dataHost.innerHTML.trim());
+                this.renderError = (undefined === this.formType && !this.$.slotContainer1.__dataHost.innerHTML.trim());
                 this.formHasType = (undefined !== this.formType);
 
-                this.$.slotContainer.innerHTML = this.$.slotContainer.__dataHost.innerHTML;
+                this.$.slotContainer1.innerHTML = this.$.slotContainer1.__dataHost.innerHTML;
                 if (this.formType == 'user-profile') {
                     this.formSections = ['user-basic', 'user-interests', 'user-preference', 'user-social-media', 'user-contact'];
                 } else {
