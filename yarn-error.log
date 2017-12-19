@@ -18,7 +18,7 @@ npm manifest:
     "name": "trmb-form",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "https://github.com/trmbl-web-components/trmb-form.git",
+    "repository": "https://github.com/trmb-web-components/trmb-form.git",
     "author": "<balasuresh_varadharajan@trimble.com>",
     "license": "MIT"
   }

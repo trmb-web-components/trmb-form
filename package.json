@@ -1,12 +1,12 @@
 {
-  "name": "trmb-form",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/trmbl-web-components/trmb-form.git",
-  "author": "<balasuresh_varadharajan@trimble.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@polymer/polymer": "^2.3.1",
-    "@webcomponents/webcomponentsjs": "^1.0.20"
-  }
+    "name": "trmb-form",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/trmb-web-components/trmb-form.git",
+    "author": "<balasuresh_varadharajan@trimble.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@polymer/polymer": "^2.3.1",
+        "@webcomponents/webcomponentsjs": "^1.0.20"
+    }
 }
